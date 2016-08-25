@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using SimpleBlog.ViewModels;
+using System.Web.Mvc;
 
 namespace SimpleBlog.Controllers
 {
@@ -7,6 +8,12 @@ namespace SimpleBlog.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(AuthLogin form)
+        {
+            return View(form);
         }
     }
 }
