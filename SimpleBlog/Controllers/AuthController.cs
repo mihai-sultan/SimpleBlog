@@ -1,5 +1,6 @@
 ﻿using SimpleBlog.ViewModels;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace SimpleBlog.Controllers
 {
@@ -11,9 +12,28 @@ namespace SimpleBlog.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(AuthLogin form)
+        public ActionResult Login(AuthLogin form, string returnUrl)
         {
-            return View(form);
+            if (!ModelState.IsValid)
+            {
+                return View(form);
+            }
+
+            FormsAuthentication.SetAuthCookie(form.Username, true);
+
+            if (!string.IsNullOrWhiteSpace(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+
+            return RedirectToRoute("home");
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+
+            return RedirectToRoute("home");
         }
     }
 }
