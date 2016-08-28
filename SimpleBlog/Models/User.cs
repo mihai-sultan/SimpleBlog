@@ -1,5 +1,6 @@
 ﻿using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
+using System.Collections.Generic;
 
 namespace SimpleBlog.Models
 {
@@ -29,6 +30,13 @@ namespace SimpleBlog.Models
         {
             return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
         }
+
+        public virtual IList<Role> Roles { get; set; }
+
+        public User()
+        {
+            Roles = new List<Role>();
+        }
     }
 
     public class UserMap : ClassMapping<User>
@@ -47,6 +55,12 @@ namespace SimpleBlog.Models
                 x.Column("password_hash");
                 x.NotNullable(true);
             });
+
+            Bag(x => x.Roles, x =>
+            {
+                x.Table("role_users");
+                x.Key(k => k.Column("user_id"));
+            }, x => x.ManyToMany(k => k.Column("role_id")));
         }
     }
 }
