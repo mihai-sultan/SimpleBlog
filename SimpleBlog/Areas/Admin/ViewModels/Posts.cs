@@ -1,5 +1,6 @@
 ﻿using SimpleBlog.Infrastructure;
 using SimpleBlog.Models;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace SimpleBlog.Areas.Admin.ViewModels
@@ -25,5 +26,14 @@ namespace SimpleBlog.Areas.Admin.ViewModels
         [Required, DataType(DataType.MultilineText)]
         public string Content { get; set; }
 
+        public IList<TagCheckbox> Tags { get; set; }
+
+    }
+
+    public class TagCheckbox
+    {
+        public int? Id { get; set; }
+        public string Name { get; set; }
+        public bool IsChecked { get; set; }
     }
 }

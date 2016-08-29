@@ -30,7 +30,7 @@
             slug = slug.toLowerCase();
             slug = slug.replace(/\s+/g, "-");
 
-            if (slug.charAt(slug.length - 1) == "-") {
+            if (slug.charAt(slug.length - 1) === "-") {
                 slug = slug.substr(0, slug.length - 1);
             }
 
