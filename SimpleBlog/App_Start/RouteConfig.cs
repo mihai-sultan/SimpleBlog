@@ -24,6 +24,7 @@ namespace SimpleBlog
 
             routes.MapRoute("Home", "", new { controller = "Posts", action = "Index" }, namespaces);
 
+            routes.MapRoute("Sidebar", "", new { controller = "Layout", action = "SideBar" }, namespaces);
 
             //routes.MapRoute(
             //    name: "Default",

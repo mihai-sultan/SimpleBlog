@@ -19,7 +19,9 @@ namespace SimpleBlog
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.validate*",
                         "~/Scripts/jquery.validate.unobtrusive*",
-                        "~/Scripts/bootstrap.js"));
+                        "~/Scripts/bootstrap.js",
+                        "~/Scripts/jquery.timeago.js",
+                        "~/Scripts/Frontend.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
